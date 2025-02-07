@@ -15,9 +15,9 @@ jobs:
 
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.1
-      
-    - name: Restore NuGet packages
-      run: nuget restore WpfFileViewer.sln
-      
-    - name: Build solution
-      run: msbuild WpfFileViewer.sln /p:Configuration=Release
+
+    - name: Install Make
+      run: choco install make -y
+
+    - name: Build solution using Makefile
+      run: make

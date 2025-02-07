@@ -28,10 +28,12 @@ jobs:
 
     - name: Package build output
       run: |
-        $outputPath = "WpfFileViewer_$($env:DATE).zip"
-        Compress-Archive -Path .\bin\Release\* -DestinationPath $outputPath
+           $outputPath = "WpfFileViewer_$($env:DATE).zip"
+           $currentDir = Get-Location
+           $buildOutputPath = Join-Path -Path $currentDir -ChildPath "bin\Release\*"
+           Compress-Archive -Path $buildOutputPath -DestinationPath $outputPath
       env:
-        DATE: ${{ steps.date.outputs.date }}
+          DATE: ${{ steps.date.outputs.date }}
 
     - name: Create Release
       id: create_release

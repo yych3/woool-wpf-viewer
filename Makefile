@@ -14,9 +14,5 @@ all: build
 build:
     $(MSBUILD) $(SOLUTION) /p:Configuration=$(CONFIGURATION)
 
-# 清理生成的文件
-clean:
-    $(MSBUILD) $(SOLUTION) /t:Clean /p:Configuration=$(CONFIGURATION)
-
 # 重新编译，先清理再编译
 rebuild: clean build

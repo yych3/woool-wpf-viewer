@@ -13,6 +13,7 @@ all: build
 # 编译解决方案
 build:
     $(MSBUILD) $(SOLUTION) /p:Configuration=$(CONFIGURATION)
+     echo "Compiled files are in: $(shell dir bin/Release)"
 
 # 重新编译，先清理再编译
 rebuild: clean build
